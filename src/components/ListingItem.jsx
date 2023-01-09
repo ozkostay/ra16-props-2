@@ -8,12 +8,16 @@ export default function ListingItem({item}) {
   }
   
   let currency_code;
-  if( item.currency_code === 'USD') {
-    currency_code = '$'+ item.price;
-  } else if (item.currency_code === 'EUR') {
-    currency_code = '€'+ item.price;
-  } else {
-    currency_code = item.price + ' GBP';
+  switch(item.currency_code) {
+    case 'USD':  // if (x === 'value1')
+      currency_code = '$'+ item.price;
+      break;
+    case 'EUR':  // if (x === 'value2')
+      currency_code = '€'+ item.price;
+      break;
+    default:
+      currency_code = item.price + ' GBP';
+      break;
   }
 
   let quantityClass = 'item-quantity ';
@@ -25,12 +29,10 @@ export default function ListingItem({item}) {
     quantityClass = quantityClass + 'level-high';
   }
 
-  console.log('ttt', quantityClass);
-
   return  <div className="item">
             <div className="item-image">
               <a href={item.url}>
-              <img src={item.MainImage.url_570xN} alt="image"></img>
+              <img src={item.MainImage.url_570xN} alt="no img"></img>
               </a>
             </div>
             <div className="item-details">
@@ -40,4 +42,3 @@ export default function ListingItem({item}) {
             </div>
           </div>
 }
-//{item.MainImage.url_570xN}

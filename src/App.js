@@ -6,11 +6,10 @@ import './css/main.css';
 
 const etsyList = [...etsy];
 
+// Вероятно можно было использовать listing_id, я перестраховался
 etsyList.forEach((item) => {
   item.uuid = uuid();
 });
-
-console.log(etsyList);
 
 function App() {
   return (
