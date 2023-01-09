@@ -1,18 +1,21 @@
 import './App.css';
-import Stars from './components/Stars';
+import Listing from './components/Listing';
+import etsy from './data/etsy.json';
+import { v4 as uuid } from 'uuid';
+import './css/main.css';
+
+const etsyList = [...etsy];
+
+etsyList.forEach((item) => {
+  item.uuid = uuid();
+});
+
+console.log(etsyList);
 
 function App() {
   return (
     <div className="App">
-      <Stars />
-      <Stars count={0} />
-      <Stars count={1} />
-      <Stars count={2} />
-      <Stars count={3} />
-      <Stars count={4} />
-      <Stars count={5} />
-      <Stars count={6} />
-      <Stars count={'star'} />
+      <Listing etsyList={etsyList}/>
     </div>
   );
 }
